@@ -48,8 +48,6 @@ const onHandleChange=name=>event=>{
       <input type="file" onChange={onHandleChange('photo')} placeholder="Question1" />
       <input type="file" onChange={onHandleChange('photo')} placeholder="Question2" />
       <input type="file" onChange={onHandleChange('photo')} placeholder="Question3" />
-      <input type="file" onChange={onHandleChange('photo')} placeholder="Question4" />
-      
       
       <button onClick={()=>api(formData).then(response=>{
           if(response.error){
@@ -65,14 +63,14 @@ const onHandleChange=name=>event=>{
 </div>
 
 {success && (
-    <div style={{color:'yellow'}}>
-        <h1>Your Data Succesfully saved</h1>
-        <p> Refresh to Submit another Response!</p>
+    <div style={{color:'black'}}>
+        <h2>Your Data Succesfully saved</h2>
+        <h2>Refresh to Submit another Response!</h2>
     </div>
 )}
 
 {error && (
-    <div style={{color:'white'}}>
+    <div style={{color:'black'}}>
         <h1>{error}</h1>
     </div>
 )}
