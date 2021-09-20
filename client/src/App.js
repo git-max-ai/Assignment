@@ -1,6 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
 import './App.css';
+import axios from "axios";
+
+
+
+function App() {
+    const [user, setUser] = React.useState(null)
+
+    React.useEffect(() => {
+        axios.get('/api').then(response => {
+            setUser(response.data)
+        })
+    })
+}
+
 
 
 
@@ -32,14 +46,6 @@ const onHandleChange=name=>event=>{
         }).then(response=>response.json()).catch(err=>console.log(err))
     }
 
-
-loadPeople = ()=> {
-    axios.get('/api').then(
-        (response) => {
-            console.log(response.prople)
-        }
-    )
-}
 
     return (
         <div className="main">
