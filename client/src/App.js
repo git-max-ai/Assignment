@@ -50,10 +50,10 @@ const onHandleChange=name=>event=>{
       
       <button onClick={()=>api(formData).then(response=>{
           if(response.error){
-              setValues({...values,sucess:false,error:response.error})
+              setValues({...values,success:false,error:response.error})
           }
           else{
-              setValues({...values,sucess:true,error:''})
+              setValues({...values,success:true,error:''})
           }
       })}>Update</button>
     </form>
