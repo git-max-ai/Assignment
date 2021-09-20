@@ -1,9 +1,7 @@
 
 const express=require('express')
-
-const path = require('path');
-
 const app=express()
+const path = require('path');
 const mongoose=require('mongoose')
 const bodyParser=require('body-parser')
 const cors=require('cors')
@@ -49,7 +47,20 @@ const User=mongoose.model('User', userSchema)
 //middleware
 
 app.use(bodyParser.json())
-app.use(cors())
+const whitelist = ['http://localhost:3000', 'http://localhost:4000']
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable")
+      callback(null, true)
+    } else {
+      console.log("Origin rejected")
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.use(cors(corsOptions))
 
 
 const userData=(req,res)=>{
@@ -92,11 +103,11 @@ const userData=(req,res)=>{
 app.post('/userdashboard', userData)
 
 if(process.env.NODE_ENV === "production"){
-    app.use(express.static(path.join(__dirname, 'flont', 'build')));
+    app.use(express.static(path.json(__dirname, 'client/build')));
 
-    app.get('*', (req, res)=>{
-        res.sendFile(path.resolve(__dirname, "flont", "build", "index.html"))
-    })
+    app.get('*', function(req, res){
+        res.sendFile(path.json(__dirname, "client/build", "index.html"));
+    });
 }
 
 const port=process.env.PORT || 4000;

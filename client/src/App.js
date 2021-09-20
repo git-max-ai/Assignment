@@ -32,6 +32,15 @@ const onHandleChange=name=>event=>{
         }).then(response=>response.json()).catch(err=>console.log(err))
     }
 
+
+loadPeople = ()=> {
+    axios.get('/api').then(
+        (response) => {
+            console.log(response.prople)
+        }
+    )
+}
+
     return (
         <div className="main">
             <h2>USER DASHBOARD</h2>
