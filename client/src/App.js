@@ -4,14 +4,6 @@ import './App.css';
 import axios from "axios";
 
 
-
-
-    
-
-
-
-
-
 const App = () => {
 
 const[values,setValues]=useState({
