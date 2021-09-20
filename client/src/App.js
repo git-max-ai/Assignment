@@ -5,20 +5,15 @@ import axios from "axios";
 
 
 
-function App() {
-    const [user, setUser] = React.useState(null)
 
-    React.useEffect(() => {
-        axios.get('/api').then(response => {
-            setUser(response.data)
-        })
-    })
-}
+    
+
 
 
 
 
 const App = () => {
+
 const[values,setValues]=useState({
     name:'',
     photo:'',
