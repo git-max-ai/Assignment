@@ -36,17 +36,20 @@ const onHandleChange=name=>event=>{
 
     return (
         <div className="main">
-            <h2>USER DASHBOARD</h2>
+            <h2>ASSIGNMENT</h2>
 <div className="container" id="container">
   
   <div className="form-container personal-in-container">
     <form onSubmit={(e)=>e.preventDefault()}>
-      <h1>Personal Information</h1>
-      
       <input type="text" onChange={onHandleChange('name')} placeholder="Name" />
       <input type="email" onChange={onHandleChange('email')} placeholder="Email" />
-      <input type="file" onChange={onHandleChange('photo')} placeholder="Choose profile pic" />
+      <input type="number" onChange={onHandleChange('mno')} placeholder="Roll No." />
       <input type="number" onChange={onHandleChange('mno')} placeholder="Phone No." />
+      <input type="file" onChange={onHandleChange('photo')} placeholder="Question1" />
+      <input type="file" onChange={onHandleChange('photo')} placeholder="Question2" />
+      <input type="file" onChange={onHandleChange('photo')} placeholder="Question3" />
+      <input type="file" onChange={onHandleChange('photo')} placeholder="Question4" />
+      
       
       <button onClick={()=>api(formData).then(response=>{
           if(response.error){
@@ -55,29 +58,21 @@ const onHandleChange=name=>event=>{
           else{
               setValues({...values,success:true,error:''})
           }
-      })}>Update</button>
+      })}>Submit</button>
     </form>
   </div>
-  <div className="overlay-container">
-    <div className="overlay">
-      
-      <div className="overlay-panel overlay-right">
-        <h1>Hello, Friend!</h1>
-        <p>Enter your personal details and keep supporting us</p>
-        
-      </div>
-    </div>
-  </div>
+  
 </div>
 
 {success && (
-    <div>
+    <div style={{color:'yellow'}}>
         <h1>Your Data Succesfully saved</h1>
+        <p> Refresh to Submit another Response!</p>
     </div>
 )}
 
 {error && (
-    <div style={{color:'red'}}>
+    <div style={{color:'white'}}>
         <h1>{error}</h1>
     </div>
 )}
