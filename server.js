@@ -1,5 +1,8 @@
 
 const express=require('express')
+
+const path = require('path');
+
 const app=express()
 const mongoose=require('mongoose')
 const bodyParser=require('body-parser')
@@ -89,7 +92,7 @@ const userData=(req,res)=>{
 app.post('/userdashboard', userData)
 
 if(process.env.NODE_ENV === "production"){
-    app.use(express.static('flont/build'));
+    app.use(express.static(path.join(__dirname, 'flont', 'build')));
 
     app.get('*', (req, res)=>{
         res.sendFile(path.resolve(__dirname, "flont", "build", "index.html"))
