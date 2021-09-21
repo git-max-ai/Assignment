@@ -32,7 +32,9 @@ const onHandleChange=name=>event=>{
             body:data
         }).then(response=>response.json()).catch(err=>console.log(err))
     }
-
+    const submitFunction = (e)=>{e.preventDefault();  
+    const formData = Object.fromEntries(new FormData(e.target));
+        console.log(formData)}
 
     return (
         <div className="main">
@@ -40,7 +42,7 @@ const onHandleChange=name=>event=>{
 <div className="container" id="container">
   
   <div className="form-container personal-in-container">
-    <form onSubmit={(e)=>e.preventDefault()}>
+    <form onSubmit={(e)=> submitFunction(e)}>
       <input type="text" onChange={onHandleChange('name')} placeholder="Name" />
       <input type="email" onChange={onHandleChange('email')} placeholder="Email" />
       <input type="number" onChange={onHandleChange('mno')} placeholder="Roll No." />
