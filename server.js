@@ -12,7 +12,7 @@ const fs=require('fs')
 
 //connection with mongodb
 
-mongoose.connect(`mongodb://dbKanak:Mongodb%402003@cluster0-shard-00-00.igeib.mongodb.net:27017,cluster0-shard-00-01.igeib.mongodb.net:27017,cluster0-shard-00-02.igeib.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-50r7yk-shard-0&authSource=admin&retryWrites=true&w=majority`, {useNewUrlParser: true})
+mongoose.connect(`mongodb://<user>:<password>@cluster0-shard-00-00.igeib.mongodb.net:27017,cluster0-shard-00-01.igeib.mongodb.net:27017,cluster0-shard-00-02.igeib.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-50r7yk-shard-0&authSource=admin&retryWrites=true&w=majority`, {useNewUrlParser: true})
 .then(response=>{
     console.log('DB CONNECTED')
 }).catch(err=>console.log("Unable to connect with DB"));
