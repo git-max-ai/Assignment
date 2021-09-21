@@ -49,14 +49,7 @@ const onHandleChange=name=>event=>{
       <input type="file" onChange={onHandleChange('photo')} placeholder="Question2" />
       <input type="file" onChange={onHandleChange('photo')} placeholder="Question3" />
       
-      <button onClick={()=>api(formData).then(response=>{
-          if(response.error){
-              setValues({...values,success:false,error:response.error})
-          }
-          else{
-              setValues({...values,success:true,error:''})
-          }
-      })}>Submit</button>
+      <button onClick={()=>console.log(JSON.stringify(formData))}>Submit</button>
     </form>
   </div>
   
