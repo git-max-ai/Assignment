@@ -25,6 +25,11 @@ const userSchema=new mongoose.Schema({
         trim:true,
         required:true
     },
+    course:{
+        type:String,
+        trim:true,
+        required:true
+    },
     email:{
         type:String,
         trim:true,
@@ -34,7 +39,11 @@ const userSchema=new mongoose.Schema({
         data:Buffer,
         contentType:String
     },
-    mno:{
+    roll:{
+        type:Number,
+        required:true
+    },
+    phone:{
         type:Number,
         required:true
     }
@@ -55,8 +64,8 @@ const userData=(req,res)=>{
 
     form.parse(req,(err,fields,file)=>{
         if(fields){
-            const{name,mno,email}=fields
-            if(!name || !mno || !email){
+            const{name,course,phone,roll,email}=fields
+            if(!name || !course || !phone || !roll || !email){
                 return res.status(400).json({
                     error:"Fill all the fields"
                 })

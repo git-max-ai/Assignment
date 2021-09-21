@@ -8,15 +8,17 @@ const App = () => {
 
 const[values,setValues]=useState({
     name:'',
+    course:'',
     photo:'',
     email:'',
-    mno:'',
+    phone:'',
+    roll:'',
     error:'',
     success:false,
     formData:new FormData()
 })
 
-const {name,formData,photo,email,mno,error,success}=values 
+const {name,course,formData,photo,email,mno,error,success}=values 
 
 const onHandleChange=name=>event=>{
     const value=(name==='photo') ? event.target.files[0] : event.target.value;
@@ -32,9 +34,7 @@ const onHandleChange=name=>event=>{
             body:data
         }).then(response=>response.json()).catch(err=>console.log(err))
     }
-    const submitFunction = (e)=>{e.preventDefault();  
-    const formData = Object.fromEntries(new FormData(e.target));
-        console.log(formData)}
+
 
     return (
         <div className="main">
@@ -42,16 +42,22 @@ const onHandleChange=name=>event=>{
 <div className="container" id="container">
   
   <div className="form-container personal-in-container">
-    <form onSubmit={(e)=> submitFunction(e)}>
+    <form onSubmit={(e)=>e.preventDefault()}>
       <input type="text" onChange={onHandleChange('name')} placeholder="Name" />
+      <input type="text" onChange={onHandleChange('course')} placeholder="Course" />
       <input type="email" onChange={onHandleChange('email')} placeholder="Email" />
-      <input type="number" onChange={onHandleChange('mno')} placeholder="Roll No." />
-      <input type="number" onChange={onHandleChange('mno')} placeholder="Phone No." />
+      <input type="number" onChange={onHandleChange('roll')} placeholder="Roll No." />
+      <input type="number" onChange={onHandleChange('phone')} placeholder="Phone No." />
       <input type="file" onChange={onHandleChange('photo')} placeholder="Question1" />
-      <input type="file" onChange={onHandleChange('photo')} placeholder="Question2" />
-      <input type="file" onChange={onHandleChange('photo')} placeholder="Question3" />
       
-      <button onClick={()=>console.log(JSON.stringify(formData), values)}>Submit</button>
+      <button onClick={()=>api(formData).then(response=>{
+          if(response.error){
+              setValues({...values,success:false,error:response.error})
+          }
+          else{
+              setValues({...values,success:true,error:''})
+          }
+      })}>Submit</button>
     </form>
   </div>
   
@@ -59,14 +65,14 @@ const onHandleChange=name=>event=>{
 
 {success && (
     <div style={{color:'black'}}>
-        <h2>Your Assignment Succesfully saved</h2>
+        <h2>Your  Succesfully saved</h2>
         <h2>Refresh to Submit another Response!</h2>
     </div>
 )}
 
 {error && (
     <div style={{color:'black'}}>
-        <h1>{error}</h1>
+        <h2>{error}</h2>
     </div>
 )}
 
