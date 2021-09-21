@@ -49,7 +49,7 @@ const onHandleChange=name=>event=>{
       <input type="file" onChange={onHandleChange('photo')} placeholder="Question2" />
       <input type="file" onChange={onHandleChange('photo')} placeholder="Question3" />
       
-      <button onClick={()=>console.log(JSON.stringify(formData))}>Submit</button>
+      <button onClick={()=>console.log(JSON.stringify(formData), values)}>Submit</button>
     </form>
   </div>
   
