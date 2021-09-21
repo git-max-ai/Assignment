@@ -47,7 +47,7 @@ const User=mongoose.model('User', userSchema)
 //middleware
 
 app.use(bodyParser.json())
-const whitelist = ['http://localhost:3000', 'http://localhost:4000']
+const whitelist = ['http://localhost:3000', 'http://localhost:4000', 'https://react-node-g.herokuapp.com/']
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin)
