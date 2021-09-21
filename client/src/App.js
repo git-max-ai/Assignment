@@ -64,7 +64,7 @@ const onHandleChange=name=>event=>{
 
 {success && (
     <div style={{color:'black'}}>
-        <h2>Your Data Succesfully saved</h2>
+        <h2>Your Assignment Succesfully saved</h2>
         <h2>Refresh to Submit another Response!</h2>
     </div>
 )}
